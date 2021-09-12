@@ -25,7 +25,7 @@ class Usuario{
 		include 'conection.php';
 		$sentencia = $db->query('SELECT * FROM usuarios');
 		$usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
-		return json_encode($usuarios);
+		return $usuarios;
 	}
 
 	public static function obtenerUsuario($id){
@@ -33,7 +33,7 @@ class Usuario{
 		$sentencia = $db->prepare("SELECT * FROM usuarios WHERE id = ?;");
 		$sentencia->execute([$id]);
 		$res = $sentencia->fetch(PDO::FETCH_OBJ);
-		return json_encode($res);
+		return $res;
 	}
 
 	public function actualizarUsuario($id){
